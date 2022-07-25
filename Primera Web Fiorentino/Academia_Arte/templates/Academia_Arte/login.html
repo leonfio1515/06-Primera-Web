@@ -1,0 +1,31 @@
+{% extends 'Academia_Arte/base.html' %}
+
+
+{% block content %}
+<br>
+<div style="text-align:center;">
+    <h5>Inicio de Sesion</h5>
+</div>
+<form action="" method="POST">
+    {% csrf_token %}
+
+    {% for message in messages %}
+        <div class="alert alert-{{message.type}}">{{message.text}}</div>
+    {% endfor %}
+
+    <div style="width: 25%; margin: auto;">
+
+        {% for field in form %}
+    <div class="mb-3">
+        <label for="{{field.id_for_label}}">{{field.html_name}}</label>
+        <input type="{{field.html_name}}" class="form-control" name="{{field.html_name}}">
+    </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
+        <br>
+        <p class="mt-4">Aun no tienes usuario? <a href="{% url 'register' %}">Registrate</a></p>
+    </div>
+</form>
+
+{% endblock %}

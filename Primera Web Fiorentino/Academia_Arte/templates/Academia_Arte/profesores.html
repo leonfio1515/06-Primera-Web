@@ -1,0 +1,28 @@
+{% extends 'Academia_Arte/base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="container">
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+            {% for p in profe %}
+                    <div class="col d-flex py-5 col-lg-4">
+                        <img class="rounded-circle" src="{{p.imagen_profesor.url}}" width="180" height="150">
+
+                        <rect width="100%" height="100%" fill="#777" />
+                        <text x="50%" y="50%" fill="#777" dy=".3em"></text>
+                        <h2 class="fw-normal">{{p.nombre_profesor}} {{p.apellido_profesor}}</h2>
+                        <p>Aqui encontraras informacion sobre nuestro docente {{p.nombre_profesor}}
+                            {{p.apellido_profesor}} en su curso de:</p> 
+                            <h4>{{p.curso_profesor}}</h4>
+                        <p class="lead mb-0"><a href="{% url 'profesor' p.id %}" class="fw-bold">Leer mas...</a></p>
+
+                        
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+    
+    
+{% endblock %}

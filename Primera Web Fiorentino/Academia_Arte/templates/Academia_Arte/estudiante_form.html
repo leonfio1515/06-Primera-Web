@@ -1,0 +1,28 @@
+{% extends 'Academia_Arte/base.html' %}
+
+{% block content %}
+
+<div style="text-align:center;">
+    <br>
+    <h5>Editar datos de Estudiante</h5>
+    <br>
+    <form action="" method="post">
+        {% csrf_token %}
+
+
+        {% for field in form %}
+        <div class="mb-3">
+            <b><label for="{{field.id_for_label}}">{{field.label}}</label></b>
+            <input type="{{field.value}}" value="{{field.value}}" class="form-control text-center" name="{{field.html_name}}">
+        </div>
+        {% endfor %}
+
+
+        <button type="submit" class="btn btn-primary">Guardar Estudiante <i class="bi bi-upload"></i></button>
+        <button type="reset" class="btn btn-dark">Eliminar cambios <i class="bi bi-arrow-return-left"></i></button>
+        <a href="{% url 'estudiantes_list' %}" class="btn btn-outline-danger">Atras <i class="bi bi-arrow-return-left"></i></a>
+
+
+    </form>
+</div>
+{% endblock %}

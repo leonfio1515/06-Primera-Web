@@ -1,0 +1,34 @@
+{% extends 'Academia_Arte/base.html' %}
+
+
+{% block content %}
+
+    <h1 class="col text-center" >Lista de Cursos</h1>
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre del curso</th>
+            <th scope="col">Profesor del curso</th>
+            <th scope="col"></th>
+            <th scope="col">Opciones</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for curso in object_list %}
+                <tr>
+                    <th scope="row">{{ curso.id }}</th>
+                    <td>{{ curso.nombre_curso }}</td>
+                    <td>{{ curso.profesor_curso }}</td>
+                    <td><a type="button" class="btn btn-outline-success" href="{% url 'Detail' curso.id %}">Ver Más <i class="bi bi-binoculars-fill"></i></a></td>
+                    <td><a type="button" class="btn btn-outline-primary" href="{% url 'editar_curso' curso.id %}">Editar <i class="bi bi-pencil-fill"></i></a></td>
+                    <td><a type="button" class="btn btn-outline-danger" href="{% url 'eliminar_curso' curso.id %}">Eliminar <i class="bi bi-trash3"></i></a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div style="text-align:center;">
+        <a type="button" class="col text-center btn btn-success" href="{% url 'nuevo_curso' %}">Crear Nuevo Curso</a>
+    </div>
+{% endblock %}

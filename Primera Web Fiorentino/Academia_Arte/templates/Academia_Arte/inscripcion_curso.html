@@ -1,0 +1,71 @@
+{% extends 'Academia_Arte/base.html'%}
+
+{% block content %}
+{% load static %}
+
+<!-- Contact section-->
+<section class="bg-light py-5">
+    <div class="container px-5 my-5 px-5">
+        <div class="text-center mb-5">
+            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"></div>
+            <h2 class="fw-bolder">Inscripcion a cursos</h2>
+        </div>
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+
+                <form id="contactForm" method="POST">{% csrf_token %}
+
+                    <!-- Name input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="nombre_estudiante" type="text"
+                            placeholder="Escriba su nombre..." required>
+                        <label for="name">Nombre</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="apellido_estudiante" id="name" type="text"
+                            placeholder="Escriba su apellido..." required>
+                        <label for="name">Apellido</label>
+                    </div>
+
+
+                    <!-- Email address input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="email_estudiante" type="email"
+                            placeholder="nombre@ejemplo.com">
+                        <label for="email">Correo electronico</label>
+                        <div class="invalid-feedback" required>Debe indicar un eMail.</div>
+                        <div class="invalid-feedback">El email no es valido.</div>
+                    </div>
+
+                    <!-- DNI number input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="dni_estudiante" type="tel" placeholder="1234567"
+                            required>
+                        <label for="phone">DNI</label>
+                        <div class="invalid-feedback">Debe agregar su DNI.</div>
+                    </div>
+
+                    <!-- Curso input-->
+                    <div class="form-floating mb-3">
+                        <select class="form-control" name="curso_estudiante" type="text"
+                            value="Curso" required>
+                            <option value="Seleccione un curso...">Seleccione un curso...</option>
+                        {% for curso in cursos %}
+                            <option>{{curso.nombre_curso}}</option>
+                        {% endfor %}
+                    </select>
+                    </div>
+
+
+                    <!-- Submit Button-->
+                    <div class="d-grid">
+                        <button class="btn btn-primary btn-lg" type="submit">Inscribirme</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
